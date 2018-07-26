@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LTxMsgForSipprMsgAttachmentListPopup">
+            <rect key="frame" x="0.0" y="0.0" width="445" height="352"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAH-yU-jIv">
+                    <rect key="frame" x="399" y="0.0" width="46" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="CTX-ni-Cca"/>
+                        <constraint firstAttribute="height" constant="46" id="X9u-mr-L2G"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pHJ-q7-WvH">
+                    <rect key="frame" x="0.0" y="41.5" width="445" height="310.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="附件列表" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYX-uH-MhK">
+                    <rect key="frame" x="180" y="16" width="85.5" height="25.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FAH-yU-jIv" secondAttribute="trailing" id="An8-Si-nMA"/>
+                <constraint firstItem="FAH-yU-jIv" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="CyN-Z7-DP2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="pHJ-q7-WvH" secondAttribute="bottom" id="T6a-bp-e0w"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pHJ-q7-WvH" secondAttribute="trailing" id="VJ1-gH-ecy"/>
+                <constraint firstItem="TYX-uH-MhK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="bV6-1g-iPa"/>
+                <constraint firstItem="pHJ-q7-WvH" firstAttribute="top" secondItem="TYX-uH-MhK" secondAttribute="bottom" id="g5W-Tn-Bf0"/>
+                <constraint firstItem="TYX-uH-MhK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kKQ-iT-Dpq"/>
+                <constraint firstItem="pHJ-q7-WvH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="x59-Ew-Pst"/>
+                <constraint firstItem="pHJ-q7-WvH" firstAttribute="top" secondItem="TYX-uH-MhK" secondAttribute="bottom" id="xWV-7Q-da1"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="closeBtn" destination="FAH-yU-jIv" id="YK0-VV-2WB"/>
+                <outlet property="tableView" destination="pHJ-q7-WvH" id="0Tl-zt-Mdw"/>
+            </connections>
+            <point key="canvasLocation" x="68.5" y="-104"/>
+        </view>
+    </objects>
+</document>
