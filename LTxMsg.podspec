@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "LTxMsg"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "APNs消息+管理组件. "
   s.license      = "MIT"
   s.author             = { "liangtong" => "liangtongdev@163.com" }

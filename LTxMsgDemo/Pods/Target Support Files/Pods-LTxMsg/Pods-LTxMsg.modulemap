@@ -1,0 +1,6 @@
+framework module Pods_LTxMsg {
+  umbrella header "Pods-LTxMsg-umbrella.h"
+
+  export *
+  module * { export * }
+}

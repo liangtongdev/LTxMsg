@@ -38,7 +38,7 @@
         }
         self.nameL.text = model.msgName;
         self.contentL.text = model.msgContent;
-        self.dateL.text = [NSDate lt_timeDescriptionWithDateString:model.msgDate];
+        self.dateL.text = [NSDate ltx_simpleDescriptionWithString:model.msgDate formate:@"yyyy-MM-dd HH:mm:ss"];
         if (model.hasAttachment) {
             self.attachImageView.hidden = NO;
             self.attachImageView.image = LTxImageWithName(@"ic_msg_extra_attachment");

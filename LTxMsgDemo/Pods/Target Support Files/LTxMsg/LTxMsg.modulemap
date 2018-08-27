@@ -1,0 +1,6 @@
+framework module LTxMsg {
+  umbrella header "LTxMsg-umbrella.h"
+
+  export *
+  module * { export * }
+}
