@@ -1,6 +1,6 @@
 {
   "name": "LTxMsg",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "summary": "APNs消息+管理组件.",
   "license": "MIT",
   "authors": {
@@ -12,11 +12,11 @@
   },
   "source": {
     "git": "https://github.com/liangtongdev/LTxMsg.git",
-    "tag": "0.0.1",
+    "tag": "0.0.2",
     "submodules": true
   },
   "dependencies": {
-    "LTxCore": [
+    "LTxEepMSippr": [
 
     ]
   },
@@ -29,11 +29,6 @@
           "name": "Model",
           "source_files": "LTxMsg/LTxMsgForSippr/Model/*.{h,m}",
           "public_header_files": "LTxMsg/LTxMsgForSippr/Model/**/*.h"
-        },
-        {
-          "name": "ViewModel",
-          "source_files": "LTxMsg/LTxMsgForSippr/ViewModel/*.{h,m}",
-          "public_header_files": "LTxMsg/LTxMsgForSippr/ViewModel/**/*.h"
         },
         {
           "name": "Views",
@@ -52,9 +47,6 @@
           "public_header_files": "LTxMsg/LTxMsgForSippr/Controllers/**/*.h",
           "dependencies": {
             "LTxMsg/LTxMsgForSippr/Views": [
-
-            ],
-            "LTxMsg/LTxMsgForSippr/ViewModel": [
 
             ]
           }

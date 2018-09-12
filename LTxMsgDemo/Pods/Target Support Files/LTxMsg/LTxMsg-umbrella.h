@@ -15,7 +15,6 @@
 #import "LTxMsgForSipprTypeTableViewController.h"
 #import "LTxMsgForSippr.h"
 #import "LTxMsgForSipprModel.h"
-#import "LTxMsgForSipprViewModel.h"
 #import "LTxMsgForSipprMsgAttachmentListPopup.h"
 #import "LTxMsgForSipprMsgTableViewCell.h"
 #import "LTxMsgForSipprTypeTableViewCell.h"

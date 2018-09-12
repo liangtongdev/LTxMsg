@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "LTxMsg"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "APNs消息+管理组件. "
   s.license      = "MIT"
   s.author             = { "liangtong" => "liangtongdev@163.com" }
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "9.0"
   s.source       = { :git => "https://github.com/liangtongdev/LTxMsg.git", :tag => "#{s.version}", :submodules => true }
 
-  s.dependency 'LTxCore'
+  s.dependency 'LTxEepMSippr'
   s.default_subspecs = 'LTxMsgForSippr'
 
   # LTxMsgForSippr
@@ -19,11 +19,6 @@ Pod::Spec.new do |s|
     sp.subspec 'Model' do |ssp|
       ssp.source_files  =  "LTxMsg/LTxMsgForSippr/Model/*.{h,m}"
       ssp.public_header_files = "LTxMsg/LTxMsgForSippr/Model/**/*.h"
-    end
-    # ViewModel
-    sp.subspec 'ViewModel' do |ssp|
-      ssp.source_files  =  "LTxMsg/LTxMsgForSippr/ViewModel/*.{h,m}"
-      ssp.public_header_files = "LTxMsg/LTxMsgForSippr/ViewModel/**/*.h"
     end
     # Views
     sp.subspec 'Views' do |ssp|
@@ -37,7 +32,6 @@ Pod::Spec.new do |s|
       ssp.source_files  =  "LTxMsg/LTxMsgForSippr/Controllers/*.{h,m}"
       ssp.public_header_files = "LTxMsg/LTxMsgForSippr/Controllers/**/*.h"
       ssp.dependency 'LTxMsg/LTxMsgForSippr/Views'
-      ssp.dependency 'LTxMsg/LTxMsgForSippr/ViewModel'
     end
 
     # Core

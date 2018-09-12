@@ -1,15 +1,13 @@
 //
-//  LTxMsgForSipprViewModel.m
-//  LTxMsg
+//  LTxEepMUppViewModel.m
+//  AFNetworking
 //
-//  Created by liangtong on 2018/7/24.
-//  Copyright © 2018年 LTx. All rights reserved.
+//  Created by liangtong on 2018/8/28.
 //
 
-#import "LTxMsgForSipprViewModel.h"
+#import "LTxEepMUppViewModel.h"
 
-@implementation LTxMsgForSipprViewModel
-
+@implementation LTxEepMUppViewModel
 /**
  * 推送定制 - 消息类别获取
  **/
@@ -158,7 +156,7 @@
     }];
     
     //业务需要，点开消息列表的时候，将该列表下的消息置为已读
-    [LTxMsgForSipprViewModel updateMsgTypeReadStateWithMsgType:messageType complete:nil];
+    [LTxEepMUppViewModel updateMsgTypeReadStateWithMsgType:messageType complete:nil];
 }
 
 /**
@@ -192,7 +190,7 @@
     }];
     
     //业务需要，点开消息的时候，将消息置为已读
-    [LTxMsgForSipprViewModel updateMsgReadStateWithMsgId:messageId complete:nil];
+    [LTxEepMUppViewModel updateMsgReadStateWithMsgId:messageId complete:nil];
 }
 
 /**
@@ -214,6 +212,33 @@
     }
     
     NSString* url = [NSString stringWithFormat:@"%@/v1/api/mobile/msg/updateById",config.messageHost];
+    //网络访问
+    [LTxCoreHttpService doPostWithURL:url param:params complete:^(NSString *errorTips, id data) {
+        if (complete) {
+            complete(errorTips);
+        }
+    }];
+}
+
+/**
+ * 消息 - 将多条消息的阅读状态置为已读
+ **/
++(void)updateMsgReadStateWithMsgIds:(NSString*)messageIds complete:(LTxStringCallbackBlock)complete{
+    NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+    //消息
+    if (messageIds) {
+        [params setObject:messageIds forKey:@"id"];
+    }
+    //配置信息
+    LTxCoreConfig* config = [LTxCoreConfig sharedInstance];
+    if (config.userId) {
+        [params setObject:config.userId forKey:@"userRowGuid"];
+    }
+    if (config.appId) {
+        [params setObject:config.appId forKey:@"appId"];
+    }
+    
+    NSString* url = [NSString stringWithFormat:@"%@/v1/api/mobile/msg/updateByIds",config.messageHost];
     //网络访问
     [LTxCoreHttpService doPostWithURL:url param:params complete:^(NSString *errorTips, id data) {
         if (complete) {
@@ -277,6 +302,28 @@
             }
         }
     }];
+}
+
+/**
+ * 消息 - 发送消息到服务器
+ **/
++(void)msgSendToServer:(NSString*)msgs complete:(LTxStringCallbackBlock)complete{
+    
+    NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+    //消息
+    if (msgs) {
+        [params setObject:msgs forKey:@"msgs"];
+    }
+    //配置信息
+    LTxCoreConfig* config = [LTxCoreConfig sharedInstance];
+    NSString* url = [NSString stringWithFormat:@"%@/v1/api/mobile/msg/send",config.messageHost];
+    //网络访问
+    [LTxCoreHttpService doPostWithURL:url param:params complete:^(NSString *errorTips, id data) {
+        if (complete) {
+            complete(errorTips);
+        }
+    }];
+    
 }
 #pragma mark - SMS
 /**

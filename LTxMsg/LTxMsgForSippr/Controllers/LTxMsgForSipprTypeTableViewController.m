@@ -8,7 +8,7 @@
 
 #import "LTxMsgForSipprTypeTableViewController.h"
 #import "LTxMsgForSipprTypeTableViewCell.h"
-#import "LTxMsgForSipprViewModel.h"
+#import <LTxEepMSippr/LTxEepMSippr.h>
 #import "LTxMsgForSipprMsgTableViewController.h"
 @interface LTxMsgForSipprTypeTableViewController ()
 @property (nonatomic, strong) NSMutableArray* dataSource;
@@ -42,7 +42,7 @@ static NSString* LTxSipprMsgTypeTableViewCellIdentifier = @"LTxSipprMsgTypeTable
 
 -(void)msgTypeListFetch{
     __weak __typeof(self) weakSelf = self;
-    [LTxMsgForSipprViewModel msgTypeOverviewListFetchComplete:^(NSString *errorTips, NSArray *msgTypeList) {
+    [LTxEepMUppViewModel msgTypeOverviewListFetchComplete:^(NSString *errorTips, NSArray *msgTypeList) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         strongSelf.dataSource = [msgTypeList mutableCopy];
         strongSelf.errorTips = errorTips;

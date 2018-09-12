@@ -24,6 +24,7 @@
 #import "LTxCoreFile.h"
 #import "LTxCoreHttpService.h"
 #import "LTxCoreMacroDef.h"
+#import "LTxCoreEmptyDataSetViewModel.h"
 #import "LTxCoreBaseTableViewCell.h"
 #import "LTxCoreMJRefresh.h"
 

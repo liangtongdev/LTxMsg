@@ -7,7 +7,7 @@
 //
 
 #import "LTxMsgForSipprPushTableViewController.h"
-#import "LTxMsgForSipprViewModel.h"
+#import <LTxEepMSippr/LTxEepMSippr.h>
 @interface LTxMsgForSipprPushTableViewController ()
 @property(nonatomic,strong)NSArray* dataSource;
 @property(nonatomic,strong)NSMutableSet* selectedConfigSet;
@@ -41,7 +41,7 @@ static NSString* LTxSipprMsgPushDiyTableViewCellIdentifier = @"LTxSipprMsgPushDi
 
 -(void)pushTypePushListFetch{
     __weak __typeof(self) weakSelf = self;
-    [LTxMsgForSipprViewModel pushTypeListFetchComplete:^(NSString *errorTips, NSArray *pushTypeList) {
+    [LTxEepMUppViewModel pushTypeListFetchComplete:^(NSString *errorTips, NSArray *pushTypeList) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         strongSelf.dataSource = [pushTypeList mutableCopy];
         if (!errorTips && [pushTypeList count] == 0) {
@@ -56,7 +56,7 @@ static NSString* LTxSipprMsgPushDiyTableViewCellIdentifier = @"LTxSipprMsgPushDi
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     if (_selectedConfigSet) {
-        [LTxMsgForSipprViewModel diyPushTypeList:_selectedConfigSet complete:nil];
+        [LTxEepMUppViewModel diyPushTypeList:_selectedConfigSet complete:nil];
     }
 }
 

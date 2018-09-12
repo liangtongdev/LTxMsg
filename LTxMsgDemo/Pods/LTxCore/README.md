@@ -37,6 +37,8 @@
 
 #### 文件预览
 
+![](https://github.com/liangtongdev/LTxCore/blob/master/screenshots/file_preview.png)
+
 ```Objective-C
         LTxCoreFilePreviewViewController* previewVC = [[LTxCoreFilePreviewViewController alloc] init];
         previewVC.fileURL = [NSURL URLWithString:@"https://developer.apple.com/ibeacon/Getting-Started-with-iBeacon.pdf"];
@@ -88,7 +90,9 @@ Master中主要针对共通部分开发，定制化内容在branch中进行，�
 
 #### Release Log
 
-+  0.0.5 (2018/07/25)  - Cocoapods-related file bug-fix
++  0.5.2 (2018/08/28)  - 添加ShareHost相关配置
+
++  0.5.0 (2018/07/25)  - Cocoapods-related file bug-fix
 
 
 +  0.0.2 (2018/07/17)  - 文件预览

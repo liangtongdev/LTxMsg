@@ -7,8 +7,8 @@
 //
 
 #import "LTxMsgForSipprMsgTableViewController.h"
+#import <LTxEepMSippr/LTxEepMSippr.h>
 #import "LTxMsgForSipprMsgTableViewCell.h"
-#import "LTxMsgForSipprViewModel.h"
 #import "LTxMsgForSipprMsgAttachmentListPopup.h"
 #import "LTxCoreFilePreviewViewController.h"
 
@@ -50,7 +50,7 @@ static NSString* LTxSipprMsgTypeDetailTableViewCellIdentifier = @"LTxSipprMsgTyp
 
 -(void)msgListFetch{
     __weak __typeof(self) weakSelf = self;
-    [LTxMsgForSipprViewModel msgListFetchWithMsgType:_msgTypeCode currentPage:1 maxResult:[LTxCoreConfig sharedInstance].pageSize complete:^(NSString *errorTips, NSArray *msgList) {
+    [LTxEepMUppViewModel msgListFetchWithMsgType:_msgTypeCode currentPage:1 maxResult:[LTxCoreConfig sharedInstance].pageSize complete:^(NSString *errorTips, NSArray *msgList) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         strongSelf.dataSource = [msgList mutableCopy];
         strongSelf.errorTips = errorTips;
@@ -70,7 +70,7 @@ static NSString* LTxSipprMsgTypeDetailTableViewCellIdentifier = @"LTxSipprMsgTyp
 -(void)msgListPullup{
     __weak __typeof(self) weakSelf = self;
     NSInteger currentPage = self.dataSource.count / [LTxCoreConfig sharedInstance].pageSize + 1;
-    [LTxMsgForSipprViewModel msgListFetchWithMsgType:_msgTypeCode currentPage:currentPage maxResult:[LTxCoreConfig sharedInstance].pageSize complete:^(NSString *errorTips, NSArray *msgList) {
+    [LTxEepMUppViewModel msgListFetchWithMsgType:_msgTypeCode currentPage:currentPage maxResult:[LTxCoreConfig sharedInstance].pageSize complete:^(NSString *errorTips, NSArray *msgList) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         strongSelf.errorTips = errorTips;
         if ([msgList count] > 0) {
@@ -148,7 +148,7 @@ static NSString* LTxSipprMsgTypeDetailTableViewCellIdentifier = @"LTxSipprMsgTyp
              */
             __weak __typeof(self) weakSelf = self;
             [self showAnimatingActivityView];
-            [LTxMsgForSipprViewModel msgDetailWithMsgRowGuid:rowGuid complete:^(NSString *errorTips, NSDictionary *msgDic) {
+            [LTxEepMUppViewModel msgDetailWithMsgRowGuid:rowGuid complete:^(NSString *errorTips, NSDictionary *msgDic) {
                 __strong __typeof(weakSelf)strongSelf = weakSelf;
                 [strongSelf hideAnimatingActivityView];
                 strongSelf.errorTips = errorTips;

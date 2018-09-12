@@ -11,9 +11,6 @@
 
 //View
 
-//ViewModel
-#import "LTxMsgForSipprViewModel.h"
-
 //ViewController
 #import "LTxMsgForSipprTypeTableViewController.h"
 #import "LTxMsgForSipprMsgTableViewController.h"

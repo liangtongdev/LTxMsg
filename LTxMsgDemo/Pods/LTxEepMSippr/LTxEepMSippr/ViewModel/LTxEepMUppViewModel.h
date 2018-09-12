@@ -1,16 +1,15 @@
 //
-//  LTxMsgForSipprViewModel.h
-//  LTxMsg
+//  LTxEepMUppViewModel.h
+//  AFNetworking
 //
-//  Created by liangtong on 2018/7/24.
-//  Copyright © 2018年 LTx. All rights reserved.
+//  Created by liangtong on 2018/8/28.
 //
 
 #import <Foundation/Foundation.h>
 #import <LTxCore/LTxCore.h>
 
 /*消息相关接口*/
-@interface LTxMsgForSipprViewModel : NSObject
+@interface LTxEepMUppViewModel : NSObject
 
 /**
  * 推送定制 - 消息类别获取
@@ -50,6 +49,11 @@
 +(void)updateMsgReadStateWithMsgId:(NSString*)messageId complete:(LTxStringCallbackBlock)complete;
 
 /**
+ * 消息 - 将多条消息的阅读状态置为已读
+ **/
++(void)updateMsgReadStateWithMsgIds:(NSString*)messageIds complete:(LTxStringCallbackBlock)complete;
+
+/**
  * 消息 - 将某一条消息的阅读状态置为已读
  **/
 +(void)updateMsgReadStateWithMsgGuid:(NSString*)guid complete:(LTxStringCallbackBlock)complete;
@@ -58,6 +62,11 @@
  * 消息 - 根据业务编码获取消息详情
  **/
 +(void)msgDetailWithMsgRowGuid:(NSString*)messageRowGuid complete:(LTxStringAndDictionaryCallbackBlock)complete;
+
+/**
+ * 消息 - 发送消息到服务器
+ **/
++(void)msgSendToServer:(NSString*)msgs complete:(LTxStringCallbackBlock)complete;
 
 #pragma mark - SMS
 /**
