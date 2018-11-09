@@ -45,9 +45,9 @@ static NSString* LTxSipprMsgPushDiyTableViewCellIdentifier = @"LTxSipprMsgPushDi
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         strongSelf.dataSource = [pushTypeList mutableCopy];
         if (!errorTips && [pushTypeList count] == 0) {
-            strongSelf.errorTips = LTxLocalizedString(@"text_message_push_no_item");
+            strongSelf.emptyDataSet.emptyDescription = LTxLocalizedString(@"text_message_push_no_item");
         }else{
-            strongSelf.errorTips = errorTips;
+            strongSelf.emptyDataSet.emptyDescription = errorTips;
         }
         [strongSelf finishSipprRefreshing];
     }];

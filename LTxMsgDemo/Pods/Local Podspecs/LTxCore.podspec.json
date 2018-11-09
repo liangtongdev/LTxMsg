@@ -1,6 +1,6 @@
 {
   "name": "LTxCore",
-  "version": "0.0.2",
+  "version": "0.5.6",
   "summary": "组件化管理核心模块.",
   "license": "MIT",
   "authors": {
@@ -12,9 +12,13 @@
   },
   "source": {
     "git": "https://github.com/liangtongdev/LTxCore.git",
-    "tag": "0.0.2"
+    "tag": "0.5.6",
+    "submodules": true
   },
   "dependencies": {
+    "MBProgressHUD": [
+
+    ],
     "MJRefresh": [
       "~> 3.1.15.3"
     ],
@@ -24,31 +28,30 @@
     "AFNetworking": [
       "~> 3.2.1"
     ],
-    "Toast": [
-      "~> 4.0.0"
-    ],
-    "FMDB": [
-      "~> 2.7.2"
-    ],
     "SSZipArchive": [
       "~> 2.1.3"
+    ],
+    "LTxCategories": [
+
+    ],
+    "FMDBExtension": [
+
     ]
   },
   "frameworks": [
     "Foundation",
     "UIKit"
   ],
-  "default_subspecs": "Controllers",
   "subspecs": [
     {
       "name": "Model",
       "source_files": "LTxCore/Model/*.{h,m}",
-      "public_header_files": "LTxCore/Model/**/*.h"
+      "public_header_files": "LTxCore/Model/*.h"
     },
     {
       "name": "Utils",
       "source_files": "LTxCore/Utils/*.{h,m}",
-      "public_header_files": "LTxCore/Utils/**/*.h",
+      "public_header_files": "LTxCore/Utils/*.h",
       "dependencies": {
         "LTxCore/Model": [
 
@@ -58,7 +61,17 @@
     {
       "name": "Views",
       "source_files": "LTxCore/Views/*.{h,m}",
-      "public_header_files": "LTxCore/Views/**/*.h",
+      "public_header_files": "LTxCore/Views/*.h",
+      "dependencies": {
+        "LTxCore/Utils": [
+
+        ]
+      }
+    },
+    {
+      "name": "ViewModel",
+      "source_files": "LTxCore/ViewModel/*.{h,m}",
+      "public_header_files": "LTxCore/ViewModel/*.h",
       "dependencies": {
         "LTxCore/Utils": [
 
@@ -71,6 +84,19 @@
       "public_header_files": "LTxCore/Controllers/**/*.h",
       "dependencies": {
         "LTxCore/Views": [
+
+        ],
+        "LTxCore/ViewModel": [
+
+        ]
+      }
+    },
+    {
+      "name": "Core",
+      "public_header_files": "LTxCore/LTxCore.h",
+      "source_files": "LTxCore/LTxCore.h",
+      "dependencies": {
+        "LTxCore/Controllers": [
 
         ]
       }

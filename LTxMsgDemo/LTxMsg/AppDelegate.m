@@ -20,7 +20,7 @@
     
     [LTxCoreConfig sharedInstance].skinColor = [UIColor darkGrayColor];
     [LTxCoreConfig sharedInstance].appId = @"68fb2fd2-4abb-42f2-8b49-34a2af38b3b0";
-    [LTxCoreConfig sharedInstance].userId = @"59f05ffeabfd4a0e606075c0";
+    [LTxCoreConfig sharedInstance].userNumber = @"59f05ffeabfd4a0e606075c0";
     [LTxCoreConfig sharedInstance].messageHost = @"http://125.46.29.147:6004/eepj-push";
     [[LTxCoreConfig sharedInstance] appSetup];
     

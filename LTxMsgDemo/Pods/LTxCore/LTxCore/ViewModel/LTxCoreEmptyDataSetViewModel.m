@@ -11,14 +11,13 @@
 
 #pragma mark - 空画面及错误提示
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView{
-    return nil;
+    return _attributedTitle;
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView{
-    if (_errorTips == nil) {
-        return nil;
-    }else{
-        NSString *text = _errorTips;
+    if (_attributedEmptyDescription) {
+        return _attributedEmptyDescription;
+    }else if (_emptyDescription ) {
         NSMutableDictionary *attributes = [NSMutableDictionary new];
         NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
         paragraph.lineBreakMode = NSLineBreakByWordWrapping;
@@ -27,17 +26,22 @@
         [attributes setObject:[UIColor lightGrayColor] forKey:NSForegroundColorAttributeName];
         [attributes setObject:paragraph forKey:NSParagraphStyleAttributeName];
         
-        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:text attributes:attributes];
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:_emptyDescription attributes:attributes];
         
         return attributedString;
+    }else{
+        return nil;
     }
+
 }
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView{
-    if (_errorTips == nil) {
-        return [UIImage imageNamed:@"ic_no_data"];//初始画面
+    if (_emptyImage) {
+        return _emptyImage;
+    }else if (_emptyDescription || _attributedEmptyDescription) {
+        return [UIImage imageNamed:@"ic_error"];//发生错误了
     }else{
-        return [UIImage imageNamed:@"app_view_error_code"];//发生错误了
+        return [UIImage imageNamed:@"ic_no_data"];//初始画面
     }
 }
 
@@ -86,5 +90,31 @@
     }
 }
 
+
+#pragma mark - Setter
+-(void)setEmptyImage:(UIImage *)emptyImage{
+    _emptyImage = emptyImage;
+    if (_emptyDataSetChangeCallback) {
+        _emptyDataSetChangeCallback();
+    }
+}
+-(void)setAttributedTitle:(NSAttributedString *)attributedTitle{
+    _attributedTitle = attributedTitle;
+    if (_emptyDataSetChangeCallback) {
+        _emptyDataSetChangeCallback();
+    }
+}
+-(void)setEmptyDescription:(NSString *)emptyDescription{
+    _emptyDescription = emptyDescription;
+    if (_emptyDataSetChangeCallback) {
+        _emptyDataSetChangeCallback();
+    }
+}
+-(void)setAttributedEmptyDescription:(NSAttributedString *)attributedEmptyDescription{
+    _attributedEmptyDescription = attributedEmptyDescription;
+    if (_emptyDataSetChangeCallback) {
+        _emptyDataSetChangeCallback();
+    }
+}
 
 @end

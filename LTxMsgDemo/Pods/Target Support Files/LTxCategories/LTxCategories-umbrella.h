@@ -16,6 +16,7 @@
 #import "NSString+LTxExtension.h"
 #import "NSString+LTxHash.h"
 #import "NSString+LTxVerification.h"
+#import "NSUserDefaults+LTxExtension.h"
 #import "UIApplication+LTxNetworkActivityIndicator.h"
 #import "UIButton+LTxBadge.h"
 #import "UIButton+LTxImagePosition.h"

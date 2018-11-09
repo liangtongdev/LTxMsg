@@ -7,7 +7,7 @@ target 'LTxMsg' do
   # use_frameworks!
 
   # Pods for LTxMsg
-  pod 'LTxCore'
+  pod 'LTxCore',:git=>"https://github.com/liangtongdev/LTxCore.git"
   pod 'LTxMsg', :path => '../'
 
 end

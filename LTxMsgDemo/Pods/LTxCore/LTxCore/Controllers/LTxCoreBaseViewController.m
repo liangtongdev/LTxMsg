@@ -112,6 +112,12 @@
 -(LTxCoreEmptyDataSetViewModel*)emptyDataSet{
     if(!_emptyDataSet){
          _emptyDataSet = [[LTxCoreEmptyDataSetViewModel alloc] init];
+        __weak __typeof(self) weakSelf = self;
+        _emptyDataSet.emptyDataSetChangeCallback = ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.emptyScrollView reloadEmptyDataSet];
+            });
+        };
     }
     return _emptyDataSet;
 }
@@ -120,10 +126,7 @@
     _refreshAction = refreshAction;
     _emptyDataSet.refreshAction = refreshAction;
 }
--(void)setErrorTips:(NSString *)errorTips{
-    _errorTips = errorTips;
-    _emptyDataSet.errorTips = errorTips;
-}
+
 
 
 @end

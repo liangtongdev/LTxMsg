@@ -53,7 +53,7 @@ static NSString* LTxSipprMsgTypeDetailTableViewCellIdentifier = @"LTxSipprMsgTyp
     [LTxEepMUppViewModel msgListFetchWithMsgType:_msgTypeCode currentPage:1 maxResult:[LTxCoreConfig sharedInstance].pageSize complete:^(NSString *errorTips, NSArray *msgList) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         strongSelf.dataSource = [msgList mutableCopy];
-        strongSelf.errorTips = errorTips;
+        strongSelf.emptyDataSet.emptyDescription = errorTips;
         [strongSelf finishSipprRefreshing];
         if ([msgList count] == [LTxCoreConfig sharedInstance].pageSize) {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -72,7 +72,7 @@ static NSString* LTxSipprMsgTypeDetailTableViewCellIdentifier = @"LTxSipprMsgTyp
     NSInteger currentPage = self.dataSource.count / [LTxCoreConfig sharedInstance].pageSize + 1;
     [LTxEepMUppViewModel msgListFetchWithMsgType:_msgTypeCode currentPage:currentPage maxResult:[LTxCoreConfig sharedInstance].pageSize complete:^(NSString *errorTips, NSArray *msgList) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
-        strongSelf.errorTips = errorTips;
+        strongSelf.emptyDataSet.emptyDescription = errorTips;
         if ([msgList count] > 0) {
             [strongSelf.dataSource addObjectsFromArray:msgList];
         }
@@ -151,7 +151,7 @@ static NSString* LTxSipprMsgTypeDetailTableViewCellIdentifier = @"LTxSipprMsgTyp
             [LTxEepMUppViewModel msgDetailWithMsgRowGuid:rowGuid complete:^(NSString *errorTips, NSDictionary *msgDic) {
                 __strong __typeof(weakSelf)strongSelf = weakSelf;
                 [strongSelf hideAnimatingActivityView];
-                strongSelf.errorTips = errorTips;
+                strongSelf.emptyDataSet.emptyDescription = errorTips;
                 if (!errorTips) {
                     NSArray* fileList = [msgDic objectForKey:@"files"];
                     dispatch_async(dispatch_get_main_queue(), ^{

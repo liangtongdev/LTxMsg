@@ -45,7 +45,11 @@ static NSString* LTxSipprMsgTypeTableViewCellIdentifier = @"LTxSipprMsgTypeTable
     [LTxEepMUppViewModel msgTypeOverviewListFetchComplete:^(NSString *errorTips, NSArray *msgTypeList) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         strongSelf.dataSource = [msgTypeList mutableCopy];
-        strongSelf.errorTips = errorTips;
+        if (errorTips) {
+            strongSelf.emptyDataSet.emptyDescription = errorTips;
+        }else{
+            strongSelf.emptyDataSet.emptyDescription = LTxLocalizedString(@"text_message_mine_empty");
+        }
         [strongSelf finishSipprRefreshing];
     }];
 }
